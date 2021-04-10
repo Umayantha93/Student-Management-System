@@ -11,20 +11,111 @@
     <title>Student Management System</title>
   </head>
   <body>
-  <script>
+
+  @include("navbar")
   
     @if($layout == 'index')
     <div class="container-fluid">
-        <section></section>
-        <section></section>
+        <div class= "row">
+            <section class="col-md-5">
+                @include("studentlist")
+            </section>
+            <section class="col"></section>
+        </div>
     </div>
     @elseif($layout == 'create')
-
+    <div class="container-fluid">
+    <div class="row">
+        <section class="col">
+            @include("studentlist")
+        </section>
+        <section class="col">
+            <form action="{{url('/store')}}" method="POST">
+            @csrf 
+                <div class="form-group">
+                    <label>CNE</label>
+                    <input name="cne" type="text" class="form-control" placeholder="Enter cne">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input name="firstName" type="text" class="form-control" placeholder="Enter First Name">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label>Second Name</label>
+                    <input name="secondName" type="text" class="form-control" placeholder="Enter Second Name">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input name="age" type="text" class="form-control" placeholder="Enter Age">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label>Speciality</label>
+                    <input name="speciality" type="text" class="form-control" placeholder="Enter Speciality">
+                </div>
+                <br>
+                <input type="submit" class="btn btn-info" value="Save">
+                <input type="reset" class="btn btn-warning" value="Reset">
+            </form>
+        </section>
+        </div>
+    </div>
     @elseif($layout == 'show')
+    <div class="container-fluid">
+        <div class="row">
+            <section class="col">
+                @include("studentlist")
+            </section>
+            <section class="col">
+        
+            </section>
+        </div>
+    </div>
     @elseif($layout == 'edit')
+    <div class="container-fluid">
+        <div class="row">
+            <section class="col">
+                @include("studentlist")
+            </section>
+            <section class="col">
+            <form action="{{url('/update/'.$student->id)}}" method="POST">
+            @csrf 
+                <div class="form-group">
+                    <label>CNE</label>
+                    <input value="{{ $student->cne }}" name="cne" type="text" class="form-control" placeholder="Enter cne">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input value="{{ $student->firstName }}" name="firstName" type="text" class="form-control" placeholder="Enter First Name">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label>Second Name</label>
+                    <input value="{{ $student->secondName }}" name="secondName" type="text" class="form-control" placeholder="Enter Second Name">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input value="{{ $student->age }}" name="age" type="text" class="form-control" placeholder="Enter Age">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label>Speciality</label>
+                    <input value="{{ $student->speciality }}" name="speciality" type="text" class="form-control" placeholder="Enter Speciality">
+                </div>
+                <br>
+                <input type="submit" class="btn btn-info" value="Update">
+                <input type="reset" class="btn btn-warning" value="Reset">
+            </form>
+            </section>
+        </div>
+    </div>
     @endif
 
-    </script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
