@@ -13,9 +13,15 @@
   <body>
 
   @include("navbar")
+
+  <div class="row header-container justify-content-center">
+    <div class="header">
+    <h1 style="text-align:center">Student Management System</h1>
+    </div>
+  </div>
   
     @if($layout == 'index')
-    <div class="container-fluid">
+    <div class="container-fluid mt-4">
         <div class= "row">
             <section class="col-md-5">
                 @include("studentlist")
@@ -24,13 +30,20 @@
         </div>
     </div>
     @elseif($layout == 'create')
-    <div class="container-fluid">
+    <div class="container-fluid mt-4">
     <div class="row">
         <section class="col">
             @include("studentlist")
         </section>
         <section class="col">
-            <form action="{{url('/store')}}" method="POST">
+
+
+        <div class="card mb-3">
+            <img src="https://www.solutiontree.com/blog/wp-content/uploads/2017/09/Preparing-Students-for-Student-Led-Discussion.jpg" class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Enter The Information of a New Student</h5>
+
+                <form action="{{url('/store')}}" method="POST">
             @csrf 
                 <div class="form-group">
                     <label>CNE</label>
@@ -63,25 +76,34 @@
         </section>
         </div>
     </div>
+            </div>
+        </div>
+
+
+            
     @elseif($layout == 'show')
-    <div class="container-fluid">
+    <div class="container-fluid mt-4">
         <div class="row">
             <section class="col">
                 @include("studentlist")
             </section>
             <section class="col">
-        
+
             </section>
         </div>
     </div>
     @elseif($layout == 'edit')
-    <div class="container-fluid">
+    <div class="container-fluid mt-4">
         <div class="row">
             <section class="col">
                 @include("studentlist")
             </section>
             <section class="col">
-            <form action="{{url('/update/'.$student->id)}}" method="POST">
+                <div class="card mb-3">
+                    <img src="https://www.solutiontree.com/blog/wp-content/uploads/2017/09/Preparing-Students-for-Student-Led-Discussion.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Update the Information of a Student</h5>
+                        <form action="{{url('/update/'.$student->id)}}" method="POST">
             @csrf 
                 <div class="form-group">
                     <label>CNE</label>
@@ -111,9 +133,15 @@
                 <input type="submit" class="btn btn-info" value="Update">
                 <input type="reset" class="btn btn-warning" value="Reset">
             </form>
-            </section>
+  
+
+
+                    </div>
+                </div>
+                </section>
         </div>
     </div>
+            
     @endif
 
     <!-- Optional JavaScript; choose one of the two! -->
